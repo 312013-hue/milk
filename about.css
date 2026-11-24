@@ -1,0 +1,288 @@
+/* ===== 關於我們頁面專用樣式（搭配 style.css 使用）===== */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px;   /* 點選單跳轉時，避免標題被導覽列擋住 */
+}
+/* ===== 頁首 ===== */
+.about-hero {
+    text-align: center;
+    padding: 30px 20px 40px;
+}
+
+.about-logo {
+    height: 400px;
+    width: auto;
+    margin-bottom: 3px;
+}
+
+.about-hero h1 {
+    font-size: 44px;
+    font-weight: normal;
+    color: var(--brown);
+    margin-bottom: 0;
+    margin-top: 20px;     /* 新增這行，數字越大越往下 */
+}
+
+.about-hero p {
+    font-size: 20px;
+    color: #666;
+}
+/* ===== LOGO 區：光圈 + 裝飾 ===== */
+.about-logo-wrap {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about-logo-link {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+}
+
+/* 兩圈虛線光圈，放在 LOGO 後面 */
+.about-logo-wrap::before,
+.about-logo-wrap::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.about-logo-wrap::before {
+    width: 350px;
+    height: 350px;
+    border: 1px dashed var(--light-brown);
+}
+
+.about-logo-wrap::after {
+    width: 450px;
+    height: 450px;
+    border: 1px solid rgba(160, 130, 100, 0.2);
+}
+
+/* 兩側漂浮的小圖示 */
+.deco {
+    position: absolute;
+    font-size: 44px;
+    opacity: 0.85;
+    z-index: 1;
+    animation: floaty 4s ease-in-out infinite;
+}
+
+.d1 { top: 3%; left: 23%; }
+.d2 { bottom: 15%; left: 14%; animation-delay: 1s; }
+.d3 { top: 18%; right: 12%; animation-delay: 0.5s; }
+.d4 { bottom: 0; right: 23%; animation-delay: 1.5s; }
+
+@keyframes floaty {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+}
+
+/* ===== 副標題下的小標籤 ===== */
+.hero-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 28px;
+}
+
+.hero-tags span {
+    padding: 8px 20px;
+    font-size: 17px;
+    color: var(--brown);
+    background: var(--white);
+    border: 1px solid var(--light-brown);
+    border-radius: 999px;
+}
+
+/* 手機版：隱藏裝飾，避免擠在一起 */
+@media (max-width: 768px) {
+    .deco,
+    .about-logo-wrap::before,
+    .about-logo-wrap::after {
+        display: none;
+    }
+}
+
+/* ===== 區塊 ===== */
+.about-section {
+    padding: 70px 8%;
+}
+
+.about-alt {
+    background: #f9f6ee;
+}
+
+/* ===== 品牌故事 ===== */
+.story-row {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.story-img {
+    flex: 0 1 420px;      /* 想要的寬度，數字越小圖越小 */
+    min-width: 0;
+}
+
+.story-img img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 5 / 7;  /* 長寬比，決定截取範圍 */
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+    display: block;
+    background: #e9e2d6;
+}
+
+.story-text {
+    flex: 1;
+    min-width: 0;
+}
+.story-text h3 {
+    font-size: 30px;
+    font-weight: normal;
+    color: var(--brown);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.story-text p {
+    font-size: 19px;
+    line-height: 1.9;
+    margin-bottom: 16px;
+}
+
+/* ===== 品牌理念（三張卡片）===== */
+.card-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 40px 28px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.about-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+}
+
+.about-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.about-card h4 {
+    font-size: 26px;
+    font-weight: normal;
+    color: var(--brown);
+    margin-bottom: 12px;
+}
+
+.about-card p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #666;
+}
+
+/* ===== 品牌特色（四格）===== */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.feature-item {
+    background: var(--white);
+    border-left: 6px solid var(--light-brown);
+    border-radius: 12px;
+    padding: 28px 30px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.feature-num {
+    display: block;
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: var(--light-brown);
+    margin-bottom: 6px;
+}
+
+.feature-item h4 {
+    font-size: 24px;
+    font-weight: normal;
+    color: var(--brown);
+    margin-bottom: 8px;
+}
+
+.feature-item p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #666;
+}
+
+/* ===== 門市資訊 ===== */
+.info-box {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.info-box p {
+    font-size: 21px;
+    line-height: 2;
+    color: var(--brown);
+}
+
+.info-box p a {
+    border-bottom: 1px dashed transparent;
+    transition: border-color 0.2s;
+}
+
+.info-box p a:hover {
+    border-bottom-color: currentColor;
+}
+
+.about-btn {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 12px 36px;
+    font-size: 21px;
+    color: #fff;
+    background: var(--brown);
+    border-radius: 999px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.about-btn:hover {
+    background: #5f4837;
+    transform: translateY(-2px);
+}
+.about-section:last-of-type {
+    padding-bottom: 140px;   /* 避開吉祥物區塊的 -80px 重疊，數字自己調 */
+}

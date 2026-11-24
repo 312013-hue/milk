@@ -1,0 +1,6 @@
+# 上傳資料夾禁止執行任何 PHP
+php_flag engine off
+RemoveHandler .php .phtml .php3 .php5
+<FilesMatch "\.(php|phtml|php3|php5|phar)$">
+    Require all denied
+</FilesMatch>
